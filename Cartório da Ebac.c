@@ -1,33 +1,33 @@
-#include <stdio.h> // biblioteca de comunica√ß√£o com o usu√°rio
-#include <stdlib.h> // biblioteca de aloca√ß√£o de espa√ßo em mem√≥ria
-#include <locale.h> // biblioteca de aloca√ß√µes de texto por regi√£o
-#include <string.h> // biblioteca respons√°vel pela cria√ß√£o de strings
+#include <stdio.h> // biblioteca de comunicaÁ„o com o usu·rio
+#include <stdlib.h> // biblioteca de alocaÁ„o de espaÁo em memÛria
+#include <locale.h> // biblioteca de alocaÁıes de texto por regi„o
+#include <string.h> // biblioteca respons·vel pela criaÁ„o de strings
 
-int registro() //Fun√ß√£o respons√°vel por cadastrar os usu√°rios no sistema
+int registro() //FunÁ„o respons·vel por cadastrar os usu·rios no sistema
 {
-	//in√≠cio da cria√ß√£o de vari√°veis ou string
-	char arquivo[60]; //Definindo quem √© o arquivo quantos caracteres ele pode terv
-	char CPF[60]; //Definindo quem √© o CPF quantos caracteres ele pode ter
-	char Nome[60]; //Definindo quem √© o Nome quantos caracteres ele pode ter
-	char Sobrenome[200]; //Definindo quem √© o Sobrenome quantos caracteres ele pode ter
-	char Cargo[60]; //Definindo quem √© o Cargo e quantos caracteres ele pode ter
-	//final da cria√ß√£o de vari√°veis ou string
+	//inÌcio da criaÁ„o de vari·veis ou string
+	char arquivo[60]; //Definindo quem È o arquivo quantos caracteres ele pode terv
+	char CPF[60]; //Definindo quem È o CPF quantos caracteres ele pode ter
+	char Nome[60]; //Definindo quem È o Nome quantos caracteres ele pode ter
+	char Sobrenome[200]; //Definindo quem È o Sobrenome quantos caracteres ele pode ter
+	char Cargo[60]; //Definindo quem È o Cargo e quantos caracteres ele pode ter
+	//final da criaÁ„o de vari·veis ou string
 	
-	printf("Digite o CPF a ser Cadastrado : "); //Coletando informa√ß√µes do usu√°rio
+	printf("Digite o CPF a ser Cadastrado : "); //Coletando informaÁıes do usu·rio
 	scanf("%s",CPF); //%s refere-se ao armazenamento de uma string
 	
-	strcpy(arquivo, CPF); // Respons√°vel por Copiar os Valores das Strings
+	strcpy(arquivo, CPF); // Respons·vel por Copiar os Valores das Strings
 	
 	FILE *file; // Cria o Arquivo no Banco de Dados 
 	file = fopen(arquivo, "w"); // Cria o Arquivo no Banco de Dados e o "w" significa ESCREVER
-	fprintf(file,CPF);  // Salvo o Valor da Vari√°vel
+	fprintf(file,CPF);  // Salvo o Valor da Vari·vel
 	fclose(file); // Fecha o Arquivo
 	
 	file = fopen(arquivo, "a");
 	fprintf(file,",");
 	fclose(file); 
 	
-	printf("Digite o Nome a ser Cadastrado : "); //Coletando informa√ß√µes do usu√°rio
+	printf("Digite o Nome a ser Cadastrado : "); //Coletando informaÁıes do usu·rio
 	scanf("%s",Nome);
 		
 	file = fopen(arquivo, "a");
@@ -38,7 +38,7 @@ int registro() //Fun√ß√£o respons√°vel por cadastrar os usu√°rios no sistema
 	fprintf(file,",");
 	fclose(file); 
 	
-	printf("Digite o Sobrenome a ser Cadastrado : "); //Coletando informa√ß√µes do usu√°rio
+	printf("Digite o Sobrenome a ser Cadastrado : "); //Coletando informaÁıes do usu·rio
 	scanf("%s",Sobrenome);
 	
 	file = fopen(arquivo, "a");
@@ -49,7 +49,7 @@ int registro() //Fun√ß√£o respons√°vel por cadastrar os usu√°rios no sistema
 	fprintf(file,",");
 	fclose(file); 
 	
-	printf("Digite o Cargo a ser Cadastrado " ); //Coletando informa√ß√µes do usu√°rio
+	printf("Digite o Cargo a ser Cadastrado " ); //Coletando informaÁıes do usu·rio
 	scanf("%s",Cargo);
 	
 	file = fopen(arquivo, "a");
@@ -81,14 +81,14 @@ int consulta()
     if(file == NULL)
     {
     	
-		printf("N√£o foi poss√≠vel Encontrar o Arquivo que voc√™ est√° buscando\n ");
+		printf("N„o foi possÌvel Encontrar o Arquivo que vocÍ est· buscando\n ");
 		
 	}
     
     while(fgets(conteudo, 200, file) != NULL)
     {
     	
-    	printf("\nEssas s√£o as informa√ß√µes do usu√°rio : ");
+    	printf("\nEssas s„o as informaÁıes do usu·rio : ");
     	printf("%s", conteudo);
     	printf("\n\n");
     	
@@ -104,15 +104,15 @@ int deletar()
 	
 	char CPF[60];
 	
-	printf("Qual CPF Voc√™ Deseja Deletar? " );
+	printf("Qual CPF VocÍ Deseja Deletar? " );
 	scanf("%s",CPF);
 	
 	FILE *file;
 	file = fopen(CPF,"r"); // "r" Significa READ ou LEIA
 	
-	if(file == NULL) // Caso N√£o Encontre o CPF NO SISTEMA
+	if(file == NULL) // Caso N„o Encontre o CPF NO SISTEMA
 	{
-		printf("Este CPF N√£o se Encontra no Sistema!.\n");
+		printf("Este CPF N„o se Encontra no Sistema!.\n");
 		system("pause");
 	}
 	
@@ -125,13 +125,13 @@ int deletar()
 	}
 	fclose(file);
 	
-	remove(CPF); // Respons√°vel por Apagar o CPF
+	remove(CPF); // Respons·vel por Apagar o CPF
 	
-} // FIM DA FUN√á√ÉO DELETAR
+} // FIM DA FUN«√O DELETAR
 
 int main () 
 {	
-	int opcao=0; //Definindo Vari√°veis
+	int opcao=0; //Definindo Vari·veis
     int laco=1;
     
     for(laco=1;laco=1;)
@@ -139,35 +139,41 @@ int main ()
 	
    		setlocale(LC_ALL, "Portuguese"); //Definindo Linguagem
    		
-   		system("cls"); //Respons√°vel por Limpar a Tela
+   		system("cls"); //Respons·vel por Limpar a Tela
    		
-   		printf("### Cart√≥rio da EBAC  ###\n\n");	 //In√≠cio do menu 
-   		printf("Escolha a op√ß√£o desejada do menu:\n\n");
+   		printf("### CartÛrio da EBAC  ###\n\n");	 //InÌcio do menu 
+   		printf("Escolha a opÁ„o desejada do menu:\n\n");
    		printf("\t1 - Registrar Nomes \n ");
    		printf("\t2 - Consultar Nomes \n ");
-   		printf("\t3 - Deletar Nomes \n\n\n");
-   		printf("Escolha a Op√ß√£o Desejada: ");  //Fim do Menu
+   		printf("\t3 - Deletar Nomes \n");
+   		printf("\t4 - Sair do Sistema\n\n");
+   		printf("Escolha a OpÁ„o Desejada: ");  //Fim do Menu
    
-   		scanf("%d" , &opcao); //armazenamendo a escolha do usu√°rio
+   		scanf("%d" , &opcao); //armazenamendo a escolha do usu·rio
    		
    		system("cls");
 		
 		switch(opcao)
    		{ 
    			case 1:
-   			registro(); // Chamada de fun√ß√µes
+   			registro(); // Chamada de funÁıes
    			break;
    			
    			case 2:
-   			consulta(); // Chamada de fun√ß√µes
+   			consulta(); // Chamada de funÁıes
 			break;
 			
 			case 3:
-			deletar(); // Chamada de fun√ß√µes
+			deletar(); // Chamada de funÁıes
 			break;
 			
+			case 4:
+		    printf("Obrigado por utilizar o Sistema!\n");
+		    return 0;
+		    break;
+			
 			default:
-			printf("Esta Op√ß√£o Est√° Indispon√≠vel!\n"); // Na inexist√™ncia de Fun√ß√£o, apresente esta mensagem
+			printf("Esta OpÁ„o Est· IndisponÌvel!\n"); // Na inexistÍncia de FunÁ„o, apresente esta mensagem
 			system("pause");
 			break;   	
 		}
@@ -175,4 +181,3 @@ int main ()
 	}
 	
 }
-
