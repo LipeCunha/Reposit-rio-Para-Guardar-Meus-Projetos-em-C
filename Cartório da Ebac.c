@@ -133,7 +133,18 @@ int main ()
 {	
 	int opcao=0; //Definindo Variáveis
     int laco=1;
+    char senhadigitada[10]="a";
+    int comparacao;
     
+    printf("### Cartório da EBAC  ###\n\n");
+    printf("Login de Administrador! \n\nDigite sua Senha: ");
+    scanf("%s" ,senhadigitada);
+    
+    comparacao = strcmp(senhadigitada, "administrador");
+    
+if(comparacao == 0)
+{  		
+    system("cls");
     for(laco=1;laco=1;)
     {
 	
@@ -176,8 +187,11 @@ int main ()
 			printf("Esta Opção Está Indisponível!\n"); // Na inexistência de Função, apresente esta mensagem
 			system("pause");
 			break;   	
-		}
-   		
+		}   //fim da seleção
+	
 	}
 	
+  }
+  else
+  	printf("Senha Incorreta");
 }
