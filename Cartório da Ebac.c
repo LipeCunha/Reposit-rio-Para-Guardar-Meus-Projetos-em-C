@@ -9,25 +9,26 @@ int registro() //Função responsável por cadastrar os usuários no sistema
 	char arquivo[60]; //Definindo quem é o arquivo quantos caracteres ele pode terv
 	char CPF[60]; //Definindo quem é o CPF quantos caracteres ele pode ter
 	char Nome[60]; //Definindo quem é o Nome quantos caracteres ele pode ter
-	char Sobrenome[200]; //Definindo quem é o Sobrenome quantos caracteres ele pode ter
+	char Sobrenome[60]; //Definindo quem é o Sobrenome quantos caracteres ele pode ter
 	char Cargo[60]; //Definindo quem é o Cargo e quantos caracteres ele pode ter
 	//final da criação de variáveis ou string
 	
-	printf("Digite o CPF a ser Cadastrado : "); //Coletando informações do usuário
+	printf("Digite o CPF a ser Cadastrado : \n"); //Coletando informações do usuário
 	scanf("%s",CPF); //%s refere-se ao armazenamento de uma string
 	
 	strcpy(arquivo, CPF); // Responsável por Copiar os Valores das Strings
 	
 	FILE *file; // Cria o Arquivo no Banco de Dados 
 	file = fopen(arquivo, "w"); // Cria o Arquivo no Banco de Dados e o "w" significa ESCREVER
+	fprintf(file,"CPF : ");
 	fprintf(file,CPF);  // Salvo o Valor da Variável
 	fclose(file); // Fecha o Arquivo
 	
 	file = fopen(arquivo, "a");
-	fprintf(file,",");
+	fprintf(file,", \nNOME : ");
 	fclose(file); 
 	
-	printf("Digite o Nome a ser Cadastrado : "); //Coletando informações do usuário
+	printf("Digite o Nome a ser Cadastrado : \n"); //Coletando informações do usuário
 	scanf("%s",Nome);
 		
 	file = fopen(arquivo, "a");
@@ -35,10 +36,10 @@ int registro() //Função responsável por cadastrar os usuários no sistema
 	fclose(file); 
 	
 	file = fopen(arquivo, "a");
-	fprintf(file,",");
+	fprintf(file,", \nSOBRENOME : ");
 	fclose(file); 
 	
-	printf("Digite o Sobrenome a ser Cadastrado : "); //Coletando informações do usuário
+	printf("Digite o Sobrenome a ser Cadastrado : \n"); //Coletando informações do usuário
 	scanf("%s",Sobrenome);
 	
 	file = fopen(arquivo, "a");
@@ -46,10 +47,10 @@ int registro() //Função responsável por cadastrar os usuários no sistema
 	fclose(file); 
 	
 	file = fopen(arquivo, "a");
-	fprintf(file,",");
+	fprintf(file,", \nCARGO : ");
 	fclose(file); 
 	
-	printf("Digite o Cargo a ser Cadastrado " ); //Coletando informações do usuário
+	printf("Digite o Cargo a ser Cadastrado : \n" ); //Coletando informações do usuário
 	scanf("%s",Cargo);
 	
 	file = fopen(arquivo, "a");
@@ -57,9 +58,8 @@ int registro() //Função responsável por cadastrar os usuários no sistema
 	fclose(file); 
 	
 	file = fopen(arquivo, "a");
-	fprintf(file,",");
+	fprintf(file,"\n\n");
 	fclose(file); 
-	
 	
 	system("pause");
 	
@@ -69,29 +69,27 @@ int consulta()
 {
 	setlocale(LC_ALL, "Portuguese"); //Definindo Linguagem
 	
-	char CPF[60];
+	char CPF[40];
     char conteudo[200];
     
-    printf("Digite o CPF a ser Consultado : ");
-    scanf("%s",CPF);
+    printf("Digite o CPF a ser Consultado : "); //Recebendo qual usuário vai ser consultado
+    scanf("%s",CPF); //
     
     FILE *file;
-    file = fopen(CPF,"r");
+    file = fopen(CPF,"r"); //Busca o CPF do usuário no banco de Dados
     
     if(file == NULL)
     {
     	
-		printf("Não foi possível Encontrar o Arquivo que você está buscando\n ");
-		
+		printf("Não foi possível Encontrar o Arquivo que você está buscando\n ");	
 	}
+    
+	printf("\nEssas são as informações do usuário : \n\n");
     
     while(fgets(conteudo, 200, file) != NULL)
     {
-    	
-    	printf("\nEssas são as informações do usuário : ");
     	printf("%s", conteudo);
-    	printf("\n\n");
-    	
+    	printf("\n");	
 	}
     
     system("pause");
@@ -117,14 +115,11 @@ int deletar()
 	}
 	
 	else // Mensagem de CONFIRMACAO QUE O CPF FOI DELETADO
-
 	{
 		printf("Este Cpf Foi Deletado com sucesso. \n");
-		system("pause");
-		
+		system("pause");	
 	}
 	fclose(file);
-	
 	remove(CPF); // Responsável por Apagar o CPF
 	
 } // FIM DA FUNÇÃO DELETAR
@@ -136,23 +131,24 @@ int main ()
     char senhadigitada[10]="a";
     int comparacao;
     
+	setlocale(LC_ALL, "Portuguese"); //Definindo Linguagem
+    
     printf("### Cartório da EBAC  ###\n\n");
     printf("Login de Administrador! \n\nDigite sua Senha: ");
     scanf("%s" ,senhadigitada);
     
-    comparacao = strcmp(senhadigitada, "administrador");
+    comparacao = strcmp(senhadigitada, "s04b30100");
     
 if(comparacao == 0)
 {  		
     system("cls");
     for(laco=1;laco=1;)
     {
-	
    		setlocale(LC_ALL, "Portuguese"); //Definindo Linguagem
    		
    		system("cls"); //Responsável por Limpar a Tela
    		
-   		printf("### Cartório da EBAC  ###\n\n");	 //Início do menu 
+		printf("### Cartório da EBAC  ###\n\n");	 //Início do menu 
    		printf("Escolha a opção desejada do menu:\n\n");
    		printf("\t1 - Registrar Nomes \n ");
    		printf("\t2 - Consultar Nomes \n ");
