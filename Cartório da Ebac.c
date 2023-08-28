@@ -91,7 +91,7 @@ int consulta()
     	printf("%s", conteudo);
     	printf("\n");	
 	}
-    
+    fclose(file);
     system("pause");
 
 
@@ -110,17 +110,23 @@ int deletar()
 	
 	if(file == NULL) // Caso Não Encontre o CPF NO SISTEMA
 	{
-		printf("Este CPF Não se Encontra no Sistema!.\n");
+		printf("Este Usuário Não se Encontra no Sistema!.\n");
 		system("pause");
 	}
 	
 	else // Mensagem de CONFIRMACAO QUE O CPF FOI DELETADO
 	{
-		printf("Este Cpf Foi Deletado com sucesso. \n");
-		system("pause");	
+		fclose(file);
+		remove(CPF); // Responsável por Apagar o CPF
+		FILE *file;	
+		file = fopen(CPF,"r");
+		if(file == NULL)
+		{
+			printf("Este Usuário Foi Deletado com sucesso. \n");
+			system("pause");
+		}	
 	}
 	fclose(file);
-	remove(CPF); // Responsável por Apagar o CPF
 	
 } // FIM DA FUNÇÃO DELETAR
 
